@@ -8,7 +8,6 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-
 #define SIZE 1024
 
 void write_file(int sockfd){

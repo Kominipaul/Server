@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+
 #define SIZE 1024
 
 void send_file(FILE *fp, int sockfd){
