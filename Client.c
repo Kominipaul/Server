@@ -70,7 +70,6 @@ int main(int argc, char* argv[])
     }
 	printf("[+]Connected to Server.\n");
     
-    //recieve data
     write_file(network_socket);
     printf("[+]Data written in the file successfully.\n");
     
