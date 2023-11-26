@@ -10,18 +10,21 @@
 
 #define SIZE 1024
 
-void write_file(int sockfd){
+void write_file(int sockfd) 
+{
     int n;
     FILE *fp;
     char *filename = "recv.txt";
     char buffer[SIZE];
 
     fp = fopen(filename, "w");
-    while (1) {
+    while (1)
+    {
         n = recv(sockfd, buffer, SIZE, 0);
-        if (n <= 0){
-        break;
-        return;
+        if (n <= 0)
+        {
+            break;
+            return;
         }
         fprintf(fp, "%s", buffer);
         bzero(buffer, SIZE);
@@ -29,14 +32,16 @@ void write_file(int sockfd){
     return;
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) 
+{
     
-    if (argc < 3) {
+    if (argc < 3) 
+    {
         printf("./Client IP PORT\n");
         exit(0);
     }
 
-    char *ip; strcpy(ip, argv[1]);
+    char *ip = argv[1];
     int port = atoi(argv[2]);
     socklen_t addr_size;
     char buffer[SIZE];
@@ -44,7 +49,8 @@ int main(int argc, char* argv[]) {
     //create a socket
     int network_socket, new_sock;
     network_socket = socket(AF_INET, SOCK_STREAM, 0);
-    if(network_socket < 0) {
+    if(network_socket < 0) 
+    {
         perror("[-]Error in socket");
         exit(1);
     }
@@ -57,7 +63,8 @@ int main(int argc, char* argv[]) {
     server_address.sin_addr.s_addr = inet_addr(ip);
 
     int connetion_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
-    if (connetion_status == -1) {
+    if (connetion_status == -1) 
+    {
         perror("[-]Error in socket");
         exit(1);
     }
